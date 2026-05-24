@@ -41,6 +41,19 @@ Then open `http://localhost:8000/goa.html`.
 - The design uses inline CSS and a small IntersectionObserver script for subtle animations.
 - The content is tailored to the June 12–13, 2026 trip plan.
 
+## Deploy on Netlify
+
+This site is a static HTML page, so deployment is straightforward.
+
+1. Push this repository to GitHub (or connect it directly to Netlify).
+2. In Netlify, choose **Add new site** → **Import an existing project**.
+3. Set:
+   - **Build command:** leave empty
+   - **Publish directory:** `.`
+4. Deploy.
+
+A `netlify.toml` file is included so the site redirects to `goa.html` at the root URL.
+
 ## Project status
 
 This repository is intentionally lightweight and static. It is ready to be shared, hosted, or adapted for another trip itinerary.

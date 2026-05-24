@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goa Trip — June 12–13</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F0;--bg-card:#FFFFFF;--bg-warm:#FFF8F0;
+  --text:#1A1A18;--text-muted:#6B6860;--text-light:#9E9A90;
+  --accent:#C0703A;--accent-light:#E8C4A0;--accent-glow:rgba(192,112,58,0.12);
+  --blue:#3A7EC0;--blue-light:#D6E8F7;
+  --green:#4A8C5C;--green-light:#DAF0E0;
+  --coral:#D4654A;--coral-light:#FAE0D8;
+  --purple:#7B61A8;--purple-light:#EDE6F5;
+  --sand:#D4C9B0;--sand-light:#F2EDE4;
+  --border:rgba(26,26,24,0.08);
+  --radius:16px;--radius-sm:10px;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:3rem 2rem;overflow:hidden;background:linear-gradient(165deg,#1B3A4B 0%,#2A5B6C 35%,#C0703A 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,rgba(0,0,0,0.55),transparent);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:700px;animation:fadeUp 1s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:99px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,0.9);letter-spacing:0.06em;text-transform:uppercase;font-weight:500;margin-bottom:1.5rem}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#7BE0AD;animation:pulse 2s infinite}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,7vw,4.5rem);font-weight:400;color:#fff;line-height:1.08;margin-bottom:1rem;letter-spacing:-0.02em}
+.hero h1 em{font-style:italic;color:var(--accent-light)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.75);line-height:1.6;max-width:500px;font-weight:300;margin-bottom:2rem}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.hero-meta-item{display:flex;flex-direction:column;gap:2px}
+.hero-meta-item span:first-child{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);font-weight:500}
+.hero-meta-item span:last-child{font-size:15px;color:#fff;font-weight:500}
+.wave-divider{position:absolute;bottom:-2px;left:0;right:0;z-index:3}
+.wave-divider svg{display:block;width:100%}
+
+/* MAIN */
+.main{max-width:760px;margin:0 auto;padding:3rem 1.5rem 4rem}
+
+/* DAY HEADER */
+.day-block{margin-bottom:4rem}
+.day-label{display:flex;align-items:center;gap:16px;margin-bottom:2.5rem}
+.day-num{width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;font-weight:600;flex-shrink:0}
+.day-info h2{font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-bottom:2px;letter-spacing:-0.01em}
+.day-info p{font-size:13px;color:var(--text-muted);font-weight:400}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:'';position:absolute;left:15px;top:28px;bottom:28px;width:1.5px;background:linear-gradient(to bottom,var(--sand),var(--accent-light),var(--sand));border-radius:1px}
+.stop{position:relative;margin-bottom:2rem;opacity:0;animation:fadeUp 0.6s ease both}
+.stop:nth-child(1){animation-delay:0.1s}.stop:nth-child(2){animation-delay:0.2s}.stop:nth-child(3){animation-delay:0.3s}.stop:nth-child(4){animation-delay:0.4s}.stop:nth-child(5){animation-delay:0.5s}.stop:nth-child(6){animation-delay:0.6s}
+.stop-dot{position:absolute;left:-36px;top:24px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.stop-dot.nature{background:var(--green)}.stop-dot.food{background:var(--accent)}.stop-dot.beach{background:var(--blue)}.stop-dot.culture{background:var(--purple)}.stop-dot.night{background:var(--coral)}
+
+.stop-card{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:transform 0.25s ease,box-shadow 0.25s ease}
+.stop-card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+.stop-card-top{padding:1.25rem 1.5rem 0}
+.stop-time-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.stop-time{font-size:12px;font-weight:500;color:var(--text-light);text-transform:uppercase;letter-spacing:0.04em}
+.stop-category{font-size:11px;padding:3px 10px;border-radius:99px;font-weight:500;letter-spacing:0.02em}
+.cat-nature{background:var(--green-light);color:var(--green)}.cat-food{background:rgba(192,112,58,0.1);color:var(--accent)}.cat-beach{background:var(--blue-light);color:var(--blue)}.cat-culture{background:var(--purple-light);color:var(--purple)}.cat-night{background:var(--coral-light);color:var(--coral)}
+.stop-title{font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:8px;line-height:1.3}
+.stop-desc{font-size:14px;line-height:1.65;color:var(--text-muted);font-weight:300;margin-bottom:1rem}
+.stop-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+.tag{font-size:11px;padding:4px 12px;border-radius:99px;background:var(--sand-light);color:var(--text-muted);font-weight:500}
+
+/* MAP SECTION */
+.stop-map-section{display:flex;gap:0;border-top:1px solid var(--border);overflow:hidden}
+.stop-map{flex:0 0 45%;min-height:180px;position:relative;overflow:hidden;background:#e8e4dc}
+.stop-map iframe{width:100%;height:100%;border:0;filter:saturate(0.7) contrast(1.05);transition:filter 0.3s}
+.stop-map:hover iframe{filter:saturate(1) contrast(1)}
+.stop-map-overlay{position:absolute;bottom:8px;left:8px;right:8px;display:flex;gap:6px}
+.map-btn{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);border:none;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;color:var(--text);cursor:pointer;text-decoration:none;transition:background 0.2s;font-family:var(--font-body)}
+.map-btn:hover{background:#fff}
+.map-btn svg{flex-shrink:0}
+.stop-directions{flex:1;display:flex;flex-direction:column;justify-content:center;padding:16px 20px;background:var(--bg-warm)}
+.dir-from{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;font-weight:500}
+.dir-route{font-size:13px;color:var(--text-muted);line-height:1.55;margin-bottom:8px}
+.dir-stats{display:flex;gap:14px;flex-wrap:wrap}
+.dir-stat{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-muted);font-weight:500}
+.dir-stat svg{color:var(--accent)}
+
+.stop-tip{background:var(--bg-warm);border-top:1px solid var(--border);padding:12px 1.5rem;display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--accent);line-height:1.5}
+.stop-tip svg{flex-shrink:0;margin-top:2px}
+
+/* TRANSIT DIVIDER */
+.transit{display:flex;align-items:center;gap:12px;margin:1.5rem 0;padding:0 0.5rem;color:var(--text-light);font-size:12px;font-weight:400}
+.transit-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--sand) 0,var(--sand) 6px,transparent 6px,transparent 12px)}
+.transit svg{flex-shrink:0}
+
+/* MONSOON TIP */
+.monsoon-card{background:linear-gradient(135deg,#1B3A4B,#2A5B6C);border-radius:var(--radius);padding:2rem;color:#fff;margin:3rem 0;position:relative;overflow:hidden}
+.monsoon-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,0.05);border-radius:50%}
+.monsoon-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.monsoon-card p{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.75);font-weight:300}
+.monsoon-list{list-style:none;margin-top:12px}
+.monsoon-list li{font-size:13px;color:rgba(255,255,255,0.8);padding:4px 0;padding-left:16px;position:relative}
+.monsoon-list li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent-light)}
+
+/* BOTTOM STRIP */
+.bottom-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:3rem}
+.bottom-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.2rem;text-align:center;transition:all 0.2s ease;cursor:default}
+.bottom-card:hover{border-color:var(--accent-light);background:var(--bg-warm)}
+.bottom-card .bc-icon{font-size:24px;margin-bottom:8px;display:block}
+.bottom-card .bc-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.bottom-card .bc-sub{font-size:11px;color:var(--text-light)}
+
+.footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--text-light);border-top:1px solid var(--border);margin-top:3rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+@media(max-width:600px){
+  .hero{padding:2rem 1.25rem;min-height:85vh}
+  .hero h1{font-size:2.2rem}
+  .hero-meta{gap:1.25rem}
+  .main{padding:2rem 1rem 3rem}
+  .timeline{padding-left:30px}
+  .timeline::before{left:11px}
+  .stop-dot{left:-30px;width:24px;height:24px;font-size:11px}
+  .stop-card-top{padding:1rem 1.15rem 0}
+  .stop-tip{padding:10px 1.15rem}
+  .stop-map-section{flex-direction:column}
+  .stop-map{flex:none;height:180px}
+  .day-num{width:42px;height:42px;font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> 2 days &middot; friends trip</div>
+    <h1>Two days in <em>Goa</em></h1>
+    <p class="hero-sub">Waterfalls, beaches, backwaters, and the best seafood of your life &mdash; all packed into one unforgettable trip with friends.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span>Arrive</span><span>Jun 12, 6:00 AM</span></div>
+      <div class="hero-meta-item"><span>Depart</span><span>Jun 13, 10:00 PM</span></div>
+      <div class="hero-meta-item"><span>Starting from</span><span>Vasco da Gama</span></div>
+      <div class="hero-meta-item"><span>Vibe</span><span>Food &middot; Nature &middot; Adventure</span></div>
+    </div>
+  </div>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="none">
+      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#F7F5F0"/>
+    </svg>
+  </div>
+</section>
+
+<main class="main">
+
+  <!-- ========== DAY 1 ========== -->
+  <div class="day-block">
+    <div class="day-label">
+      <div class="day-num">1</div>
+      <div class="day-info">
+        <h2>Waterfalls, spices &amp; starlit nights</h2>
+        <p>Thursday, June 12 &mdash; Arrive 6 AM at Vasco</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- STOP 1: Dudhsagar -->
+      <div class="stop">
+        <div class="stop-dot nature">1</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">6:00 &ndash; 10:30 AM</span>
+              <span class="stop-category cat-nature">Nature</span>
+            </div>
+            <h3 class="stop-title">Dudhsagar Falls</h3>
+            <p class="stop-desc">Head straight from Vasco to Collem for a jeep safari through Bhagwan Mahavir Wildlife Sanctuary. India's fifth-tallest waterfall plunges 310 metres through the lush Western Ghats &mdash; arrive before 9 AM to watch a train rumble across the viaduct above.</p>
+            <div class="stop-tags"><span class="tag">Waterfall</span><span class="tag">Jeep safari</span><span class="tag">Wildlife</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d123123!2d73.9!3d15.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3bbfc7d34aa278d3%3A0x1972365ce86841e5!2sVasco+Da+Gama+Railway+Station!3m2!1d15.3962274!2d73.81185359999999!4m5!1s0x3be307150d8dee65%3A0xd33f073d394fc8fd!2sDudhsagar+Jeep+Taxi+Stand%2C+Kolem!3m2!1d15.3364254!2d74.2442570!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Vasco+Da+Gama+Railway+Station,+Goa/Dudhsagar+Jeep+Taxi+Stand,+Kolem,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Vasco da Gama Station &rarr; Collem Jeep Stand via NH 748 through the Western Ghats</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~55 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~1 hr 15 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            ~&#8377;860/person incl. jeep &amp; life jacket. Book ahead. Beware of monkeys!
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 2: Spice Plantation -->
+      <div class="stop">
+        <div class="stop-dot food">2</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">11:00 AM &ndash; 1:00 PM</span>
+              <span class="stop-category cat-food">Food</span>
+            </div>
+            <h3 class="stop-title">Spice plantation brunch</h3>
+            <p class="stop-desc">Break the drive at Sahakari Spice Farm in Ponda. Walk through cardamom, pepper, and vanilla groves, then sit down to a traditional Goan thali under the trees &mdash; aromatic, hearty, and nothing like city food.</p>
+            <div class="stop-tags"><span class="tag">Goan thali</span><span class="tag">Farm walk</span><span class="tag">Ponda</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d100000!2d74.1!3d15.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3be307150d8dee65%3A0xd33f073d394fc8fd!2sDudhsagar+Jeep+Taxi+Stand%2C+Kolem!3m2!1d15.3364254!2d74.2442570!4m5!1s0x3bbba6c962a7c529%3A0xd8e5d1e1a970c900!2sSahakari+Spice+Farm%2C+Ponda!3m2!1d15.4094752!2d74.0237045!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Dudhsagar+Jeep+Taxi+Stand,+Kolem,+Goa/Sahakari+Spice+Farm,+Ponda,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Collem &rarr; Sahakari Spice Farm, Curti, Ponda (en route to North Goa)</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~30 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~45 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            &#8377;500/person includes tour + buffet lunch. Open 9 AM &ndash; 4:30 PM.
+          </div>
+        </div>
+      </div>
+
+      <div class="transit">
+        <span class="transit-line"></span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11h12M4 13h2M10 13h2M3 5h10l1 6H2l1-6zM5 5V3h6v2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Drive to North Goa &middot; check into hotel (~45 min)
+        <span class="transit-line"></span>
+      </div>
+
+      <!-- STOP 3: Fort Aguada -->
+      <div class="stop">
+        <div class="stop-dot culture">3</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">3:30 &ndash; 5:00 PM</span>
+              <span class="stop-category cat-culture">Culture</span>
+            </div>
+            <h3 class="stop-title">Fort Aguada</h3>
+            <p class="stop-desc">Explore the ramparts of this 17th-century Portuguese citadel perched above the Arabian Sea. The old lighthouse, panoramic ocean views, and warm afternoon light make this a perfect post-lunch destination for the group.</p>
+            <div class="stop-tags"><span class="tag">Heritage</span><span class="tag">Sea views</span><span class="tag">Photography</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15000!2d73.77!3d15.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbbc157c48cbd6b%3A0xa38376307b3a7b1c!2sFort+Aguada!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/place/Fort+Aguada,+Candolim,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">From your North Goa hotel (Calangute/Candolim area) &rarr; Fort Aguada Road</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~5 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~15 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Entry &#8377;25/person. Open 9:30 AM &ndash; 6:00 PM.
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 4: Souza Lobo -->
+      <div class="stop">
+        <div class="stop-dot food">4</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">7:30 &ndash; 9:30 PM</span>
+              <span class="stop-category cat-food">Food</span>
+            </div>
+            <h3 class="stop-title">Dinner at Souza Lobo</h3>
+            <p class="stop-desc">A Goa institution since 1932, right on Calangute Beach. Go big: butter garlic lobster, kingfish recheado, crab masala, and finish with bebinca and a round of kaju feni cocktails.</p>
+            <div class="stop-tags"><span class="tag">Seafood</span><span class="tag">Goan classic</span><span class="tag">Beachfront</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5000!2d73.755!3d15.544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbbc1fd8f017db9%3A0xcd08aa809494169e!2sSouza+Lobo+-+Since+1932!5e0!3m2!1sen!2sin!4v1700000000003!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Fort+Aguada,+Candolim,+Goa/Souza+Lobo,+Calangute+Beach,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Fort Aguada &rarr; Calangute Beach Road, right on the beachfront</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~7 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~20 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Open until 11:30 PM. Kaju feni is the soul of Goa in a glass.
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 5: Thalassa -->
+      <div class="stop">
+        <div class="stop-dot night">5</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">10:00 PM &ndash; late</span>
+              <span class="stop-category cat-night">Nightlife</span>
+            </div>
+            <h3 class="stop-title">Thalassa</h3>
+            <p class="stop-desc">End Day 1 at this legendary Greek-Mediterranean open-air venue near Vagator. Fairy lights strung through trees, live music, cocktails flowing &mdash; the energy after 9 PM is electric. This is where Goa friendships are forged.</p>
+            <div class="stop-tags"><span class="tag">Greek-Med</span><span class="tag">Live music</span><span class="tag">Cocktails</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5000!2d73.755!3d15.616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9e9706c8bd35f%3A0x604256147df6a5bc!2sThalassa!5e0!3m2!1sen!2sin!4v1700000000004!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Souza+Lobo,+Calangute,+Goa/Thalassa,+Siolim,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Souza Lobo, Calangute &rarr; Thalassa, Siolim-Assagao road near Vagator</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~10 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~25 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Reservation recommended. Call +91 98500 33537. Open until 1 AM.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== DAY 2 ========== -->
+  <div class="day-block">
+    <div class="day-label">
+      <div class="day-num">2</div>
+      <div class="day-info">
+        <h2>Beaches, backwaters &amp; one last sunset</h2>
+        <p>Friday, June 13 &mdash; Depart 10 PM from Vasco</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- STOP 1: Baga Beach -->
+      <div class="stop">
+        <div class="stop-dot beach">1</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">9:00 AM &ndash; 12:00 PM</span>
+              <span class="stop-category cat-beach">Beach</span>
+            </div>
+            <h3 class="stop-title">Baga Beach &mdash; water sports</h3>
+            <p class="stop-desc">Start the day with adrenaline &mdash; jet skiing, parasailing, and banana boat rides at North Goa's water sports capital. The morning is prime time before the heat and crowds peak.</p>
+            <div class="stop-tags"><span class="tag">Parasailing</span><span class="tag">Jet skiing</span><span class="tag">Banana boat</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8000!2d73.751!3d15.555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9ea1bd8a1dfe3%3A0xbab066e7f33dc1e0!2sBaga+Beach!5e0!3m2!1sen!2sin!4v1700000000005!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/place/Baga+Beach,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">From hotel (Calangute/Candolim) &rarr; Baga Beach, short ride or walk along the coast</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~3 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~10 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Parasailing ~&#8377;800&ndash;1,200/person. Negotiate directly on the beach.
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 2: Britto's -->
+      <div class="stop">
+        <div class="stop-dot food">2</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">12:30 &ndash; 2:00 PM</span>
+              <span class="stop-category cat-food">Food</span>
+            </div>
+            <h3 class="stop-title">Lunch at Britto's</h3>
+            <p class="stop-desc">Walk straight off the sand into this beloved Baga shack. Grilled prawns, fish curry rice, cold Kingfishers &mdash; feet in the sand, sea in front of you. The classic Goa lunch experience.</p>
+            <div class="stop-tags"><span class="tag">Beach shack</span><span class="tag">Seafood</span><span class="tag">Baga</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d73.749!3d15.561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9ea1ddf35c547%3A0x4af2a991269ed044!2sBritto%27s+Bar+%26+Restaurant!5e0!3m2!1sen!2sin!4v1700000000006!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/place/Britto's+Bar+%26+Restaurant,+Baga,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Right on Baga Beach &mdash; walk along the shoreline from the water sports area</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12.5c3-3.5 5-5.8 5-7.7a5 5 0 10-10 0c0 1.9 2 4.2 5 7.7z" stroke="currentColor" stroke-width="1"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1"/></svg>
+                  Walking distance
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~5 min walk
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 3: Kayaking -->
+      <div class="stop">
+        <div class="stop-dot nature">3</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">3:00 &ndash; 5:00 PM</span>
+              <span class="stop-category cat-nature">Nature</span>
+            </div>
+            <h3 class="stop-title">Chapora River &mdash; mangrove kayaking</h3>
+            <p class="stop-desc">A completely different Goa &mdash; glide through quiet mangrove channels on the Chapora River. Afternoon light filtering through the canopy, the sound of water, the occasional kingfisher. A beautiful contrast to the morning's energy.</p>
+            <div class="stop-tags"><span class="tag">Kayaking</span><span class="tag">Backwaters</span><span class="tag">Guided tour</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d30000!2d73.78!3d15.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3be9ea1ddf35c547%3A0x4af2a991269ed044!2sBritto%27s+Bar+%26+Restaurant%2C+Baga!3m2!1d15.5614892!2d73.7497345!4m5!1s0x3bedf7a0b3c2a077%3A0x38999b2f4bbe1d3b!2sChapora+mangroves+kayaking!3m2!1d15.6509894!2d73.8202621!5e0!3m2!1sen!2sin!4v1700000000007!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Baga+Beach,+Goa/Chapora+mangroves+kayaking,+Chikhli,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Baga &rarr; Chapora mangroves kayaking point, Chikhli (via Mapusa road)</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~15 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~30 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Book guided tours online &mdash; operators pick up from Vagator or Siolim area.
+          </div>
+        </div>
+      </div>
+
+      <!-- STOP 4: La Plage -->
+      <div class="stop">
+        <div class="stop-dot food">4</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">6:30 &ndash; 8:30 PM</span>
+              <span class="stop-category cat-food">Food</span>
+            </div>
+            <h3 class="stop-title">Farewell sunset at La Plage</h3>
+            <p class="stop-desc">One last golden hour meal together. This stunning French-Mediterranean gem sits right on Ashwem Beach &mdash; cr&egrave;me br&ucirc;l&eacute;e, ceviche, and cocktails as the sun melts into the Arabian Sea around 7:10 PM.</p>
+            <div class="stop-tags"><span class="tag">Sunset</span><span class="tag">French-Med</span><span class="tag">Farewell dinner</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5000!2d73.718!3d15.640!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be9e94d04e65947%3A0x21e479615d518dfd!2sLa+Plage!5e0!3m2!1sen!2sin!4v1700000000008!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/Chapora+mangroves+kayaking,+Chikhli,+Goa/La+Plage,+Ashwem+Beach,+Morjim,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">Chapora kayaking point &rarr; La Plage, Ashwem Beach (coastal road via Morjim)</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~12 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~25 min
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stop-tip">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            June sunsets ~7:10 PM. Arrive by 6:30 to soak it all in.
+          </div>
+        </div>
+      </div>
+
+      <div class="transit">
+        <span class="transit-line"></span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11h12M4 13h2M10 13h2M3 5h10l1 6H2l1-6zM5 5V3h6v2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Head to Vasco da Gama (~50&ndash;60 min from Ashwem) by 9 PM
+        <span class="transit-line"></span>
+      </div>
+
+      <!-- STOP 5: Departure -->
+      <div class="stop">
+        <div class="stop-dot culture">5</div>
+        <div class="stop-card">
+          <div class="stop-card-top">
+            <div class="stop-time-row">
+              <span class="stop-time">10:00 PM</span>
+              <span class="stop-category cat-culture">Departure</span>
+            </div>
+            <h3 class="stop-title">Depart from Vasco</h3>
+            <p class="stop-desc">Waterfalls, beaches, backwaters, spice plantations, legendary seafood, and two Goa nights done right. Collect bags from the hotel on the way. Until next time.</p>
+            <div class="stop-tags"><span class="tag">Safe travels</span></div>
+          </div>
+          <div class="stop-map-section">
+            <div class="stop-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d100000!2d73.76!3d15.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3be9e94d04e65947%3A0x21e479615d518dfd!2sLa+Plage%2C+Ashwem!3m2!1d15.6405736!2d73.718948!4m5!1s0x3bbfc7d34aa278d3%3A0x1972365ce86841e5!2sVasco+Da+Gama+Railway+Station!3m2!1d15.3962274!2d73.8118536!5e0!3m2!1sen!2sin!4v1700000000009!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="stop-map-overlay">
+                <a class="map-btn" href="https://www.google.com/maps/dir/La+Plage,+Ashwem,+Morjim,+Goa/Vasco+Da+Gama+Railway+Station,+Goa" target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+            <div class="stop-directions">
+              <div class="dir-from">Getting there</div>
+              <div class="dir-route">La Plage, Ashwem &rarr; Vasco da Gama Station via NH 66 South</div>
+              <div class="dir-stats">
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10h10M3.5 12h1.5M9 12h1.5M3 4.5h8l.75 5.5H2.25L3 4.5zM4.5 4.5V3h5v1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ~42 km
+                </div>
+                <div class="dir-stat">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+                  ~55 min
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MONSOON TIP -->
+  <div class="monsoon-card">
+    <h3>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 14s-.5 2-3 3M10 14s0 2 0 4M14 14s.5 2 3 3M5 10a5 5 0 0110 0" stroke="rgba(255,255,255,0.7)" stroke-width="1.3" stroke-linecap="round"/><circle cx="10" cy="6" r="3" stroke="rgba(255,255,255,0.8)" stroke-width="1.3"/></svg>
+      June monsoon note
+    </h3>
+    <p>June marks the beginning of monsoon in Goa. Here's what to expect:</p>
+    <ul class="monsoon-list">
+      <li>Dudhsagar is at its most dramatic &mdash; but confirm jeep safaris are running</li>
+      <li>Water sports at Baga may be weather-dependent on heavy rain days</li>
+      <li>Far fewer crowds &mdash; restaurants and shacks feel intimate and relaxed</li>
+      <li>Carry a light rain jacket and waterproof bag for phones</li>
+      <li>Greenery is absolutely lush &mdash; Goa looks its most beautiful</li>
+    </ul>
+  </div>
+
+  <div class="footer">Made for your Goa trip &middot; June 12&ndash;13, 2026</div>
+
+</main>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.style.animationPlayState = 'running'; });
+}, {threshold: 0.1});
+document.querySelectorAll('.stop').forEach(s => {
+  s.style.animationPlayState = 'paused';
+  observer.observe(s);
+});
+</script>
+
+</body>
+</html>
